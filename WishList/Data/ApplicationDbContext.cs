@@ -1,13 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace WishList.Data
+﻿namespace WishList.Data
 {
-    public class ApplicationDbContext : DbContext
+    #region Usings
+
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+
+    using WishList.Models;
+
+    #endregion
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        #region Constructeurs et destructeurs
+
+        public ApplicationDbContext(DbContextOptions options)
+            : base(options)
         {
         }
 
-        public DbSet<Models.Item> Items { get; set; }
+        #endregion
+
+        #region Propriétés et indexeurs
+
+        public DbSet<Item> Items { get; set; }
+
+        #endregion
     }
 }
